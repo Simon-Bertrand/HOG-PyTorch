@@ -1,0 +1,64 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "torch_hog"
+version = "0.0.1"
+description = "Histogram of Oriented Gradiens computation in PyTorch"
+authors = [
+    { name = "Simon Bertrand", email = "simonbertrand.contact@gmail.com" },
+]
+maintainers = [
+    { name = "Simon Bertrand", email = "simonbertrand.contact@gmail.com" },
+]
+readme = "README.md"
+requires-python = ">=3.10"
+keywords = [
+    "hog",
+    "histogram-of-oriented-gradients",
+    "pytorch",
+    "pt",
+    "batched",
+    "tensors",
+]
+classifiers = ["Programming Language :: Python :: 3"]
+dependencies = [
+    "torch>=2.2.1",
+    "numpy==1.26.4",
+    "matplotlib>=3.8.3"
+]
+
+[project.optional-dependencies]
+tests = ["flake8==7.0.0", "isort==5.13.2", "black==24.1.1"]
+
+[project.urls]
+Homepage = "https://simon-bertrand.github.io/HOG-PyTorch/"
+Repository = "https://github.com/Simon-Bertrand/HOG-PyTorch"
+
+[tool.setuptools.packages.find]
+include = ["torch_hog"]
+
+
+[tool.black]
+line-length = 100
+target-version = ['py310']
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+[tool.pylint."messages control"]
+ignore = ["setup.py", "__init__.py"]
+disable = "all"
+enable = [
+    "empty-docstring",
+    "missing-class-docstring",
+    "missing-function-docstring",
+    "missing-module-docstring",
+]
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
+testpaths = ["tests"]
